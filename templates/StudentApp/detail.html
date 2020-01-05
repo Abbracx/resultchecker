@@ -1,0 +1,33 @@
+{% extends 'StudentApp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %} 
+    {% if candidate %}
+        <hr>
+        <h4>Name: {{candidate.first_name}}  {{candidate.last_name}}</h4>
+        <h4>School: {{candidate.school.lga}}</h4>
+        <h4>Local Government Area: {{candidate.school}}</h4>
+        <hr>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                
+                <th scope="col">Subject</th>
+                <th scope="col">Score</th>
+                <th scope="col">Grade</th>
+              </tr>
+            </thead>
+            <tbody> 
+                {% for result in results %}  
+                <tr>
+                    <td>{{result.subjects}}</td>
+                    <td>{{result.score}}</td>
+                    <td>{{result.grade}}</td>
+                </tr>         
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h3>No result found</h3>
+    {% endif %}
+{% endblock content %}

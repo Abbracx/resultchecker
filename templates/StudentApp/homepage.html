@@ -1,0 +1,27 @@
+{% extends 'StudentApp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %} 
+    <section class="">
+        <h1 style='color:olivedrab'> Kaduna state BECE result form checker </h1>
+        <hr>
+        <br>
+        <form method="POST" action="{% url 'StudentApp:details'  %}">
+            {% csrf_token %}
+           
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"> <h2>Check Your Result</h2></legend>
+                {{form|crispy }}
+            </fieldset>
+
+            <!-- <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bank Details</legend>
+                {{ b_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+            -->
+                <button class="btn btn-outline-info" type="submit">View Result</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}
